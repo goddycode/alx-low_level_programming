@@ -1,24 +1,47 @@
 #include "main.h"
 /**
-* jack_bauer - a function that print every min of the day of Jack Bauer
-*
-* Return: Always 0
-*/
-void jack_bauer(void)
+ * times_table -prints tables
+ *
+ * Return: Always 0.
+ */
+void times_table(void)
 {
-	int n, i;
-
-	for (i = 0; i <= 23; i++)
-	{
-		for (n = 0; n <= 59; n++)
-		{
-			_putchar(i / 10 + '0');
-			_putchar(i % 10 + '0');
-			_putchar(':');
-			_putchar(n / 10 + '0');
-			_putchar(n % 10 + '0');
-			_putchar ('\n');
-
-		}
-	}
+int a;
+int b;
+int c;
+for (a = 0; a <= 9; a++)
+{
+for (b = 0; b <= 9; b++)
+{
+c = a * b;
+if ((c / 10) == 0)
+{
+if (b == 0)
+{
+_putchar ('0');
+}
+if (b != 0)
+{
+_putchar (' ');
+_putchar ((c % 10) + '0');
+}
+if (b < 9)
+{
+_putchar(',');
+_putchar (' ');
+}
+}
+else
+{
+_putchar ((c / 10) + '0');
+_putchar ((c % 10) + '0');
+if (b < 9)
+{
+_putchar(',');
+_putchar (' ');
+}
+}
+}
+_putchar ('\n');
+}
 }
