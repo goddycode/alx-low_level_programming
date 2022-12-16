@@ -1,19 +1,19 @@
 #include "main.h"
 
+
+
 /**
- * print_most_numbers - prints the numbers without 2 and 4
- */
 
-void print_most_numbers(void)
+   * _isdigit - checks for a digit (0 through 9)
+
+    * @digit: int 0 -9 to be checked
+
+     * Return: 1 if num is a digit, 0 otherwise
+
+      */
+
+int _isdigit(int digit)
+
 {
-	int x;
 
-	for (x = 48; x < 58; x++)
-	{
-		if (x != 50 && x != 52)
-		{
-			_putchar(x);
-		}
-	}
-	_putchar(10);
-}
+		return (digit >= '0' && digit <= '9');
