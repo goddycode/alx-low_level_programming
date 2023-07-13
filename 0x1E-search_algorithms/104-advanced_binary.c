@@ -10,36 +10,27 @@
  * @value: value to search in
  * Return: index of the number
  */
-int rec_search(int *array, size_t size, int value)
-{
-	size_t half = size / 2;
-	size_t i;
 
-	if (array == NULL || size == 0)
-		return (-1);
+int binary_search(int *array, size_t low, size_t high, int value) {
+    if (array == NULL || low > high) {
+        return -1;
+    }
 
-	printf("Searching in array");
+    size_t mid = low + (high - low) / 2;
 
-	for (i = 0; i < size; i++)
-		printf("%s %d", (i == 0) ? ":" : ",", array[i]);
+    printf("Searching in array: ");
+    for (size_t i = low; i <= high; i++) {
+        printf("%d ", array[i]);
+    }
+    printf("\n");
 
-	printf("\n");
-
-	if (half && size % 2 == 0)
-		half--;
-
-	if (value == array[half])
-	{
-		if (half > 0)
-			return (rec_search(array, half + 1, value));
-		return ((int)half);
-	}
-
-	if (value < array[half])
-		return (rec_search(array, half + 1, value));
-
-	half++;
-	return (rec_search(array + half, size - half, value) + half);
+    if (array[mid] == value) {
+        return mid;
+    } else if (array[mid] < value) {
+        return binary_search(array, mid + 1, high, value);
+    } else {
+        return binary_search(array, low, mid - 1, value);
+    }
 }
 
 /**
@@ -51,14 +42,6 @@ int rec_search(int *array, size_t size, int value)
  * @value: value to search in
  * Return: index of the number
  */
-int advanced_binary(int *array, size_t size, int value)
-{
-	int index;
-
-	index = rec_search(array, size, value);
-
-	if (index >= 0 && array[index] != value)
-		return (-1);
-
-	return (index);
+int advanced_binary(int *array, size_t size, int value) {
+    return binary_search(array, 0, size - 1, value);
 }
